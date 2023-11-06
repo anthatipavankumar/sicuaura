@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>work</title>
+    <link rel="stylesheet" href="./work.css">
+</head>
+<body>
+    <div class="kasamalama">
+        <div class="form-box">
+            <div class="button-box">
+                <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="login()" >login</button>
+            <button type="button" class="toggle-btn" onclick="register()">signup</button> </div>
+            <form id="login" class="input-grp" method="post">
+                <div class="input-box">
+                    
+                    <div class="input-field">
+                        <input type="text" id="Hospitalname" placeholder="hospitalname" required>
+                        <input type="email" id="emai" placeholder="emailId" required>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <input type="password" id="code" placeholder="Specialaccesscode" required>
+                        <button class="btn" onclick="validation()">submit</button>
+                        </div>
+                </div>
+               
+            </form>
+        <form id="register" class="input-grp" method="get">
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" id="hsname" placeholder="hospitalname"></div>
+                    <div class="input-field">
+                        <input type="email" id="email" placeholder="email id" >
+                    
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" id="addr" placeholder="address" required> </div>
+                    <div class="input-field">
+                        <input type="number" id="no" placeholder="number" >
+                   
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" id="city" placeholder="city" required> </div>
+                    <div class="input-field">
+                        <input type="number" id="hsrno" placeholder="hospital Register number" >
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="text" id="state" placeholder="state" required> </div>
+                    <div class="input-field">
+                        <input type="number" id="ewr" placeholder="emergency ward number" >
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="number" id="pin" placeholder="pincode" required> </div>
+                    <div class="input-field">
+                        <input type="file" id="rc" placeholder="registration certificate" >
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    
+                    <input type="date" id="date" placeholder="hospital registration date"  required> </div>
+                    <div class="input-field">
+                        <input type="password" id="password" placeholder="create password" >
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field">
+                    <input type="number" id="ambulance" placeholder="no.of amubulance available" required> </div>
+                    <div class="input-field">
+                        <input type="password" id="cpassword" placeholder="confirm password" >
+                </div>
+            </div>
+            <button class="btn" type="submit" onclick="store()">signup</button>
+            <p>*terms and conditions are applicable</p>
+        </form>
+        <video src="" id="video"></video>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript">
+function validation(){
+     var hospitalname=document.getElementById('Hospitalname');
+    var email=document.getElementById('email');
+    var password=document.getElementById('password');
+    var code='7284';
+    let Hospital=localStorage.getItem("hospital_name");
+    let Email=localStorage.getItem("Email");
+    let Password=localStorage.getItem("password");
+    let Code=localStorage.getItem("cpassword");
+    if((hospitalname==Hospital) && (email==Email) && (password==Password)&&(code==Code))
+    {
+        navigator.mediaDevices.getUserMedia({audio:false,video:true}).then(stream=>{
+            constvideo=document.getElementById('video');video.srcobject=stream;
+            video.play();
+        })
+    }
+    else{
+        swal("invalid data", "...try again", "error");
+    }
+    
+}
+        var x=document.getElementById("login");
+        var y=document.getElementById("register");
+        var z=document.getElementById("btn");
+        function register(){
+            x.style.left="-800px";
+            y.style.left="50px";
+            z.style.left="100px";
+        }
+        function login(){
+            x.style.left="50px";
+            y.style.left="-800px";
+            z.style.left="0px";
+        }
+        function store(){
+        let hospitalname=document.querySelector("#hsname");
+        let Email=document.querySelector('#email');
+        let Address=document.querySelector('#addr');
+        let phone_number=document.querySelector('#no');
+        let City=document.querySelector('#city');
+        let Hospital_registration_number=document.querySelector('#hsrno');
+        let State=document.querySelector('#state');
+        let Emergency_ward_number=document.querySelector('#ewr');
+        let Pincode=document.querySelector("pin");
+        let Registration_Certificate=document.querySelector("rc");
+        let Register_date=document.querySelector("date");
+        let Create_password=document.querySelector("password");
+        let ambulance_available=document.querySelector("ambulance");
+        let Confirm_password=document.querySelector("cpassword");
+        localStorage.setItem("hospital_name",hospitalname);
+        localStorage.setItem("Email",Email);
+        localStorage.setItem(" Address",Address);
+        localStorage.setItem("Phone_number",phone_number);
+        localStorage.setItem("city",City);
+        localStorage.setItem("Hospital_registration_number",Hospital_registration_number);
+        localStorage.setItem("State",State);
+        localStorage.setItem("Emergency_ward_number ",Emergency_ward_number);
+        localStorage.setItem("State",State);
+        localStorage.setItem("Emergency_ward_number ",Emergency_ward_number);
+        localStorage.setItem("Register_date",Register_date);
+        localStorage.setItem("Create_password",Create_password);
+        localStorage.setItem("ambulance_available",ambulance_available);
+        localStorage.setItem("Confirm_password",Confirm_password);
+        swal("Registration Success", "...welcome", "success");
+        }
+    </script>
+</body>
+</html>
